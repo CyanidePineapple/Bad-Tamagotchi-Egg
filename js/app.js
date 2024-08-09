@@ -7,134 +7,92 @@ const state = {
 
 /*---------------------------- Variables (state) ----------------------------*/
 let timer;
+let gameOver = false;
 
-let gameOver;
 /*------------------------ Cached Element References ------------------------*/
-const boredomStatEl = document.getElementById("boredom-stat");
-const hungerStatEl = document.getElementById("hunger-stat");
-const sleepinessStatEl = document.getElementById("sleepiness-stat");
+const statEls = {
+  boredom: document.getElementById("boredom-stat"),
+  hunger: document.getElementById("hunger-stat"),
+  sleepiness: document.getElementById("sleepiness-stat"),
+};
 
-console.log(boredomStatEl, hungerStatEl, sleepinessStatEl);
-
-const playBtnEl = document.getElementById("play");
-const feedBtnEl = document.getElementById("feed");
-const sleepBtnEl = document.getElementById("sleep");
-
-// console.log(playBtnEl, feedBtnEl, sleepBtnEl);
+const buttons = {
+  play: document.getElementById("play"),
+  feed: document.getElementById("feed"),
+  sleep: document.getElementById("sleep"),
+};
 
 const gameMessageEl = document.getElementById("message");
-
-console.log(gameMessageEl);
-
-const resetBtnEl = document.getElementById("reset");
-
-// console.log(resetBtnEl);
+const resetBtnEl = document.getElementById("restart");
 
 /*-------------------------------- Functions --------------------------------*/
 function init() {
-  console.log("Game initialized!");
 
   gameOver = false;
 
-  timer = setInterval(runGame, 2000);
+  resetBtnEl.classList.add("hidden");
+  gameMessageEl.classList.add("hidden");
+
+  state.boredom = 0;
+  state.hunger = 0;
+  state.sleepiness = 0;
 
   render();
 
-  init();
-
-  gameOver = false;
-
   timer = setInterval(runGame, 2000);
 }
 
-function runGame() {
-  console.log("The game is running!");
-}
-
-function render() {}
-function updateStates() {}
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
-}
-
-function updateStates() {
-  state.boredom += getRandomInt(4);
-  state.hunger += getRandomInt(4);
-  state.sleepiness += getRandomInt(4);
-
-  function runGame() {
-    updateStates();
-    render();
-  }
-  function render() {
-    boredomStatEl.textContent = state.boredom;
-    hungerStatEl.textContent = BtnElstate.hunger;
-    sleepinessStatEl.textContent = state.sleepiness;
-  }
-}
-
-function checkGameOver() {
-  if (state.boredom >= 10 || state.hunger >= 10 || state.sleepiness >= 10) {
-    gameOver = true;
-  }
-}
 function runGame() {
   updateStates();
   checkGameOver();
   render();
 }
 
+function updateStates() {
+  for (let key in state) {
+    state[key] += getRandomInt(4);
+  }
+}
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+function checkGameOver() {
+  if (Object.values(state).some(stat => stat >= 10)) {
+    gameOver = true;
+  }
+}
 
 function render() {
+  for (let key in state) {
+    statEls[key].textContent = state[key];
+  }
+
   if (gameOver) {
     clearInterval(timer);
-    gameMessageEl.textContent = "Game Over!";
+    gameMessageEl.textContent = "Oh no! You Lose!";
     gameMessageEl.classList.remove("hidden");
     resetBtnEl.classList.remove("hidden");
-  } else {
-    boredomStatEl.textContent = state.boredom;
-    hungerStatEl.textContent = state.hunger;
-    sleepinessStatEl.textContent = state.sleepiness;
   }
 }
 
 /*----------------------------- Event Listeners -----------------------------*/
-function playBtnClick() {
+buttons.play.addEventListener("click", () => {
   state.boredom = 0;
   render();
+});
 
-  playBtnEl.addEventListener("click", playBtnClick);
-}
-
-function feedBtnClick() {
+buttons.feed.addEventListener("click", () => {
   state.hunger = 0;
   render();
+});
 
-  feedBtnEl.addEventListener("click", feedBtnClick);
-}
-
-function sleepBtnClick() {
+buttons.sleep.addEventListener("click", () => {
   state.sleepiness = 0;
   render();
+});
 
-  sleepBtnEl.addEventListener("click", sleepBtnClick);
-  resetBtnEl.addEventListener("click", init);
-}
+resetBtnEl.addEventListener("click", init);
 
-function init() {
-  console.log("Game initialized");
-
-  resetBtnEl.classList.add("hidden");
-  gameMessageEl.classList.add("hidden");
-
-  gameOver = false;
-
-  timer = setInterval(runGame, 2000);
-
-  state.boredom = 0;
-  state.hunger = 0;
-  state.sleepiness = 0;
-
-  render();
-}
 init();
