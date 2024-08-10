@@ -91,9 +91,7 @@ button:active {
 #dir-para {
   text-align: center;
   margin-bottom: 10px;
-  width: 100%;
   white-space: nowrap;
-  font-size: 2vw; 
   overflow: hidden;
   text-overflow: ellipsis;
 }
