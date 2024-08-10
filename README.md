@@ -19,3 +19,6 @@ Special thanks to MDN for help with all DOM syntax, ChatGPT 4.0 for detailed exp
 1. HTML
 1. CSS
 1. Hopes and Prayers
+
+## Next Steps
+Next major steps following in true modern triple A game fashion will be microtransactions! I would also like to make the game timer go on for longer like a traditional Tamagotchi pet and give the UI a more modern look and possible port to a mobile version that can be used as a widget! I also would like to add some cool new features like a job feature where your pet earns money at a job they work at which 2x speeds the rate of sleepiness. The money the pet earns could be used to buy upgraded items to put on the avatar!
