@@ -6,7 +6,7 @@
 body {
   font-size: 16px;
   min-height: 100vh;
-  background-color: #ffd3f7;
+  background-color: #c0810b;
 }
 
 /* element styles */
@@ -77,4 +77,23 @@ button:active {
 
 .hidden {
   visibility: hidden;
+}
+
+#dir-tit {
+  text-align: center;
+  margin-bottom: 10px;
+  width: 100%;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#dir-para {
+  text-align: center;
+  margin-bottom: 10px;
+  width: 100%;
+  white-space: nowrap;
+  font-size: 2vw; 
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
