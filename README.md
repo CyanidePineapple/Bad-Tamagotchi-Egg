@@ -10,7 +10,7 @@ All you have to do is keep your pet from being bored, hungry or sleepy by pressi
 
 Click the link below to play the deployed game!
 
-https://cyanidepineapple.github.io/Tamagotchi-Project/
+https://cyanidepineapple.github.io/Bad-Tamagotchi-Egg/
 ## Attributions
 Special thanks to MDN for help with all DOM syntax, ChatGPT 4.0 for detailed explanations of arrays and functions syntax and my wife for coming up with the egg since currently our baby is a growing egg. (Hopefully we keep this one from getting too sassy ;)
 

@@ -24,3 +24,5 @@ As a user, I want a reset button to start over if I lose
 // `handleClick()` function.
 
 // 7) Create reset functionality.
+
+## Notes
