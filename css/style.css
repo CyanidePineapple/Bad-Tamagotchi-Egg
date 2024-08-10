@@ -93,5 +93,6 @@ button:active {
   margin-bottom: 10px;
   white-space: nowrap;
   overflow: hidden;
+  width: 100%;
   text-overflow: ellipsis;
 }
